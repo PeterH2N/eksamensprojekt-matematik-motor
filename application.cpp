@@ -5,34 +5,45 @@
 #include <map>
 #include <vector>
 #include <string>
-#include <regex>
+#include <algorithm>
+#include <functional>
 
 using namespace std;
 
-char operators[] = {'+', '-', '*', '/', '^', '='};
-char seperators[] = {';'};
+char operators[] = { '+', '-', '*', '/', '^', '=', '(', ')', ':' };
+char seperators[] = { ';' };
 map<string, double> identifiers;
 
 template<typename T, int N>
 bool arrayContains(T(&array)[N], T key)
 {
-    for (int i = 0; i < N; i++)
-    {
-        if (key == array[i])
-            return true;
-    }
-    return false;
+	for (int i = 0; i < N; i++)
+	{
+		if (key == array[i])
+			return true;
+	}
+	return false;
+}
+
+template<typename T1, typename T2>
+bool mapContainsKey(map<T1, T2> map, T1 key)
+{
+	for (auto it = map.begin(); it != map.end(); it++)
+		if (it->first == key)
+			return true;
+	return false;
 }
 
 struct Token
 {
-    enum TokenType : int
+	enum TokenType : int
 	{
 		Identifier,
 		Literal,
 		Operator,
-        Seperator,
-        Invalid
+		Seperator,
+		Function,
+		Invalid
 	};
 
 	TokenType type;
@@ -42,16 +53,18 @@ struct Token
 	{
 		switch (type)
 		{
-        case (int)Token::TokenType::Identifier:
+		case (int)Token::TokenType::Identifier:
 			return "identifier";
-        case (int)Token::TokenType::Literal:
+		case (int)Token::TokenType::Literal:
 			return "literal";
-        case (int)Token::TokenType::Operator:
+		case (int)Token::TokenType::Operator:
 			return "operator";
-        case (int)Token::TokenType::Seperator:
+		case (int)Token::TokenType::Seperator:
 			return "seperator";
+		case (int)Token::TokenType::Function:
+			return "function";
 		default:
-            return "invalid";
+			return "invalid";
 		}
 	}
 
@@ -63,57 +76,103 @@ struct Token
 
 Token::TokenType getTypeFromChar(char c)
 {
-    if (arrayContains(operators, c))
-        return Token::TokenType::Operator;
-    else if (c >= 48 && c <= 57)
-        return Token::TokenType::Literal;
-    else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-        return Token::TokenType::Identifier;
-    else if (arrayContains(seperators, c))
-        return Token::TokenType::Seperator;
-    else
-        return Token::TokenType::Invalid;
+	if (arrayContains(operators, c))
+		return Token::TokenType::Operator;
+	else if ((c >= 48 && c <= 57) || c == '.')
+		return Token::TokenType::Literal;
+	else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == 95)
+		return Token::TokenType::Identifier;
+	else if (arrayContains(seperators, c))
+		return Token::TokenType::Seperator;
+	else
+		return Token::TokenType::Invalid;
 }
 
- vector<Token> Lexify(string input)
+
+
+map< string, function<Token(vector<Token>)>> storedFunctions;
+
+vector<Token> Lexify(string input)
 {
-	 vector<Token> Tokens;
-     char currentChar;
-     Token::TokenType currentType, prevType;
-     string buffer;
+	input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
 
-     prevType = Token::TokenType::Invalid;
+	vector<Token> tokens;
+	Token currentToken;
+	char currentChar;
+	Token::TokenType currentType = Token::TokenType::Invalid, prevType;
+	string buffer;
+	bool hasADecimal = false;
 
-     for (size_t i = 0; i < input.size(); i++)
-     {
-         currentChar = input[i];
-         currentType = getTypeFromChar(currentChar);
+	currentChar = input[0];
+	prevType = getTypeFromChar(currentChar);
 
-		 
+	buffer = currentChar;
 
-     }
+	for (size_t i = 1; i < input.size(); i++)
+	{
+		currentChar = input[i];
+		currentType = getTypeFromChar(currentChar);
 
 
-	 return Tokens;
+
+		if ((currentType == Token::TokenType::Literal && prevType == Token::TokenType::Literal) || (prevType == Token::TokenType::Literal && currentChar == '.' && !hasADecimal))
+		{
+			hasADecimal = true;
+			buffer += currentChar;
+		}
+		else if (prevType == Token::TokenType::Identifier && (currentType == Token::TokenType::Identifier || currentType == Token::TokenType::Literal))
+		{
+			buffer += currentChar;
+		}
+		else if (currentType != prevType)
+		{
+			if (mapContainsKey(storedFunctions, buffer))
+			{
+				prevType = Token::TokenType::Function;
+			}
+			currentToken.type = prevType;
+			currentToken.value = buffer;
+			tokens.push_back(currentToken);
+			buffer = currentChar;
+			prevType = currentType;
+		}
+		else if (currentType == Token::TokenType::Invalid)
+		{
+			cout << "Invalid character in expression at character " + i + 1 << endl;
+			return {};
+		}
+
+	}
+	currentToken.type = currentType;
+	currentToken.value = buffer;
+	tokens.push_back(currentToken);
+
+	return tokens;
 }
 
- string tokensString(vector<Token> tokens)
- {
-	 string returnString = "";
-	 for (int i = 0; i < tokens.size(); i++)
-	 {
-		 returnString += tokens[i].printString();
-		 if (i < tokens.size() - 1)
-			 returnString += ", ";
-	 }
-	 return returnString;
- }
+string tokensString(vector<Token> tokens)
+{
+	string returnString = "";
+	for (int i = 0; i < tokens.size(); i++)
+	{
+		returnString += tokens[i].printString();
+		if (i < tokens.size() - 1)
+			returnString += ", ";
+	}
+	return returnString;
+}
 
- int main()
- {
+Token Sin(vector<Token> args)
+{
+	return Token();
+}
 
-	 string input = "2.5 + x * 6 + 5 = 5.7 * x ";
+int main()
+{
+	storedFunctions["sin"] = Sin;
 
-	 cout << tokensString(Lexify(input)) << endl;
-	 return 0;
- }
+	string input = "sin(x)=5";
+
+	cout << tokensString(Lexify(input)) << endl;
+	return 0;
+}
