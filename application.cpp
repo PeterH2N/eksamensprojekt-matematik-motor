@@ -89,7 +89,7 @@ Token::TokenType getTypeFromChar(char c)
          currentChar = input[i];
          currentType = getTypeFromChar(currentChar);
 
-
+		 
 
      }
 
