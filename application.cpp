@@ -6,21 +6,32 @@
 #include <vector>
 #include <string>
 
-#include "operators.h"
-
 using namespace std;
 
-map<string, Operator*> Operators;
+char operators[] = {'+', '-', '*', '/', '^', '='};
+char seperators[] = {';'};
 map<string, double> identifiers;
+
+template<typename T, int N>
+bool arrayContains(T(&array)[N], T key)
+{
+    for (int i = 0; i < N; i++)
+    {
+        if (key == array[i])
+            return true;
+    }
+    return false;
+}
 
 struct Token
 {
-	enum class TokenType
+    enum TokenType : int
 	{
 		Identifier,
 		Literal,
 		Operator,
-		Seperator
+        Seperator,
+        Invalid
 	};
 
 	TokenType type;
@@ -30,16 +41,16 @@ struct Token
 	{
 		switch (type)
 		{
-		case Token::TokenType::Identifier:
+        case (int)Token::TokenType::Identifier:
 			return "identifier";
-		case Token::TokenType::Literal:
+        case (int)Token::TokenType::Literal:
 			return "literal";
-		case Token::TokenType::Operator:
+        case (int)Token::TokenType::Operator:
 			return "operator";
-		case Token::TokenType::Seperator:
+        case (int)Token::TokenType::Seperator:
 			return "seperator";
 		default:
-			return "what";
+            return "invalid";
 		}
 	}
 
@@ -49,54 +60,39 @@ struct Token
 	}
 };
 
-template<typename T1, typename T2>
-bool mapContainsKey(map<T1, T2> map, T1 key)
+Token::TokenType getTypeFromChar(char c)
 {
-	for (auto it = map.begin(); it != map.end(); it++)
-	{
-		if (it->first == key)
-			return true;
-	}
-	return false;
+    if (arrayContains(operators, c))
+        return Token::TokenType::Operator;
+    else if (c >= 48 && c <= 57)
+        return Token::TokenType::Literal;
+    else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+        return Token::TokenType::Identifier;
+    else if (arrayContains(seperators, c))
+        return Token::TokenType::Seperator;
+    else
+        return Token::TokenType::Invalid;
 }
 
  vector<Token> Lexify(string input)
 {
-	 if (input[input.size() - 1] != ' ')
-		 input += " ";
 	 vector<Token> Tokens;
-	 string sub;
-	 int firstI = 0;
-	 int secondI = firstI;
+     char currentChar;
+     Token::TokenType currentType, prevType;
+     string buffer;
 
-	 while (secondI != -1)
-	 {
-	 	 Token currentToken;
-	 	 
-	 	 secondI = input.find(" ", firstI);
-	 	 sub = input.substr(firstI, secondI - firstI);
-	 	 
-	 	 if (sub[0] >= 48 && sub[0] <= 57)
-	 	 {
-	 	 	 currentToken.type = Token::TokenType::Literal;
-	 	 	 currentToken.value = sub;
-	 	 	 Tokens.push_back(currentToken);
-	 	 }
-	 	 else if (mapContainsKey(Operators, sub))
-	 	 {
-	 	 	 currentToken.type = Token::TokenType::Operator;
-	 	 	 currentToken.value = sub;
-	 	 	 Tokens.push_back(currentToken);
-	 	 }
-	 	 else if ((sub[0] >= 65 && sub[0] <= 90) || (sub[0] >= 97 && sub[0] <= 122))
-	 	 {
-	 	 	 currentToken.type = Token::TokenType::Identifier;
-	 	 	 currentToken.value = sub;
-	 	 	 Tokens.push_back(currentToken);
-	 	 }
-	 	 
-	 	 firstI = secondI + 1;
-	 }
+     prevType = Token::TokenType::Invalid;
+
+     for (size_t i = 0; i < input.size(); i++)
+     {
+         currentChar = input[i];
+         currentType = getTypeFromChar(currentChar);
+
+
+
+     }
+
+
 	 return Tokens;
 }
 
@@ -114,11 +110,6 @@ bool mapContainsKey(map<T1, T2> map, T1 key)
 
  int main()
  {
-	 Operators["+"] = new Add();
-	 Operators["-"] = new Subtract();
-	 Operators["*"] = new Multiply();
-	 Operators["/"] = new Divide();
-	 Operators["="] = new Equals();
 
 	 string input = "2.5 + test = 5.7";
 
