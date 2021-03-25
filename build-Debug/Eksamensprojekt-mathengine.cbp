@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Eksamensprojekt-mathengine"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Eksamensprojekt-mathengine">
+				<Option output="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Eksamensprojekt-mathengine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 Eksamensprojekt-mathengine"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Eksamensprojekt-mathengine/fast">
+				<Option output="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Eksamensprojekt-mathengine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 Eksamensprojekt-mathengine/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/haim/Desktop/Skole/HTX\ 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/application.cpp">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

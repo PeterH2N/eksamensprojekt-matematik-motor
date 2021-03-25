@@ -1,0 +1,3 @@
+/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/rebuild_cache.dir
+/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/edit_cache.dir
+/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/Eksamensprojekt-mathengine.dir
