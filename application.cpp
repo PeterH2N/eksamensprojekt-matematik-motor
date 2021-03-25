@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <regex>
 
 #include "operators.h"
 
@@ -66,8 +67,8 @@ bool mapContainsKey(map<T1, T2> map, T1 key)
 		 input += " ";
 	 vector<Token> Tokens;
 	 string sub;
-	 int firstI = 0;
-	 int secondI = firstI;
+	 size_t firstI = 0;
+	 size_t secondI = firstI;
 
 	 while (secondI != -1)
 	 {
@@ -120,7 +121,7 @@ bool mapContainsKey(map<T1, T2> map, T1 key)
 	 Operators["/"] = new Divide();
 	 Operators["="] = new Equals();
 
-	 string input = "2.5 + test = 5.7";
+	 string input = "2.5 + x * 6 + 5 = 5.7 * x ";
 
 	 cout << tokensString(Lexify(input)) << endl;
 	 return 0;
