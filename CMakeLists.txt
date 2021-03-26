@@ -5,7 +5,9 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("Eksamensprojekt-mathengine")
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 # Add source to this project's executable.
-add_executable (Eksamensprojekt-mathengine "application.cpp" )
+add_executable (Eksamensprojekt-mathengine "application.cpp" "src/token.cpp" "src/expression.h" "src/expression.cpp")
 
 # TODO: Add tests and install targets if needed.
