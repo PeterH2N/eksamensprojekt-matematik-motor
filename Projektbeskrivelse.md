@@ -9,11 +9,12 @@ I dette projekt vil der blive udviklet en "math engine", som skal kunne være i 
 
 
 ## Angivelse af sprog, biblioteker etc. (hvis andet end C++ og STL)
-- C++
-- STL
+-  C++
+-  STL
 
 ## Problemformulering
 I dette projekt arbejdes der at lave et matematik program. Da dette er meget bredt er der lagt vægt på følgende funktionalitter:
-- Løse matematiske udtryk
-- Løse simple ligninger
-- Regne funktionsværdier ud, til en funktion
+
+-  Løse matematiske udtryk
+-  Løse simple ligninger
+-  Regne funktionsværdier ud, til en funktion
