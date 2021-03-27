@@ -1,5 +1,6 @@
 #ifndef HELPFUNCTIONS_H
 #define HELPFUNCTIONS_H
+#include "globals.h"
 #include <vector>
 #include <map>
 

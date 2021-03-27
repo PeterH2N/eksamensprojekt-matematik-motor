@@ -1,6 +1,11 @@
 #include "token.h"
 #include <iostream>
 
+Token::Token(TokenType _type, std::string _value)
+	: type(_type), value(_value)
+{
+}
+
 std::string Token::TokenTypeString() const
 {
 	switch ((int)this->type)
@@ -29,6 +34,11 @@ std::ostream& operator<<(std::ostream& os, const Token& t)
 {
 	os << t.printString();
 	return os;
+}
+
+bool operator==(const Token& t1, const Token& t2)
+{
+	return (t1.type == t2.type && t1.value == t2.value);
 }
 
 Token::TokenType getTypeFromChar(char c)

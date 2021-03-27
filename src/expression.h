@@ -14,6 +14,8 @@ public:
 
 	void lexify(std::string);
 
+	Expression calculated();
+
 	std::string printString() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Expression& t);

@@ -9,12 +9,13 @@
 
 int main()
 {
-	storedFunctions["sin"] = [](std::vector<Token> args) {return Token();};
+	storedFunctions["sin"] = [](){};
 
-	std::string input = "sin(x)";
+	std::string input = "(2+2*3)/5^4";
 
 	Expression expr(input);
 
-	std::cout << expr << std::endl;
+	std::cout << expr.calculated() << std::endl;
+
 	return 0;
 }

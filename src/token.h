@@ -6,9 +6,7 @@
 #include <functional>
 #include "helpfunctions.h"
 
-static char operators[] = { '+', '-', '*', '/', '^', '=', '(', ')', ':' };
-static char seperators[] = { ';' };
-static std::map<std::string, double> identifiers;
+
 
 class Token
 {
@@ -23,7 +21,10 @@ public:
 		Invalid
 	};
 
-	TokenType type;
+	Token() {}
+	Token(TokenType _type, std::string _value);
+
+	TokenType type = TokenType::Invalid;
 	std::string value;
 
 	std::string TokenTypeString() const;
@@ -32,11 +33,10 @@ public:
 
 
 	friend std::ostream& operator<<(std::ostream& os, const Token& t);
+
+	friend bool operator==(const Token& t1, const Token& t2);
 };
 
 Token::TokenType getTypeFromChar(char c);
-
-
-static std::map< std::string, std::function<Token(std::vector<Token>)>> storedFunctions;
 
 #endif TOKEN_H
