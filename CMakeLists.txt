@@ -5,9 +5,12 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("Eksamensprojekt-mathengine")
 
+file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE HDR_FILES ${PROJECT_SOURCE_DIR}/src/*.hpp)
+
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 # Add source to this project's executable.
-add_executable (Eksamensprojekt-mathengine "application.cpp" "src/token.cpp" "src/expression.h" "src/expression.cpp" "src/globals.h")
+add_executable (Eksamensprojekt-mathengine "application.cpp" ${SRC_FILES} ${HDR_FILES} )
 
 # TODO: Add tests and install targets if needed.

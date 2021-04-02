@@ -11,7 +11,7 @@ int main()
 {
 	storedFunctions["sin"] = [](){};
 
-	std::string input = "(2+2*3)/5^4";
+	std::string input = "2*(0-6)+(5*2)";
 
 	Expression expr(input);
 
