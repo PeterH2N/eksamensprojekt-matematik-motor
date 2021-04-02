@@ -6,7 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 project ("Eksamensprojekt-mathengine")
 
 file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
-file(GLOB_RECURSE HDR_FILES ${PROJECT_SOURCE_DIR}/src/*.hpp)
+file(GLOB_RECURSE HDR_FILES ${PROJECT_SOURCE_DIR}/src/*.h)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 

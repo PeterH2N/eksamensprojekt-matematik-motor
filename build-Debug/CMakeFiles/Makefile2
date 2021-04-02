@@ -93,12 +93,12 @@ clean: CMakeFiles/Eksamensprojekt-mathengine.dir/clean
 CMakeFiles/Eksamensprojekt-mathengine.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=1,2 "Built target Eksamensprojekt-mathengine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=1,2,3,4 "Built target Eksamensprojekt-mathengine"
 .PHONY : CMakeFiles/Eksamensprojekt-mathengine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Eksamensprojekt-mathengine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Eksamensprojekt-mathengine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" 0
 .PHONY : CMakeFiles/Eksamensprojekt-mathengine.dir/rule

@@ -169,6 +169,60 @@ application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.s
 .PHONY : application.cpp.s
 
+src/expression.o: src/expression.cpp.o
+
+.PHONY : src/expression.o
+
+# target to build an object file
+src/expression.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o
+.PHONY : src/expression.cpp.o
+
+src/expression.i: src/expression.cpp.i
+
+.PHONY : src/expression.i
+
+# target to preprocess a source file
+src/expression.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.i
+.PHONY : src/expression.cpp.i
+
+src/expression.s: src/expression.cpp.s
+
+.PHONY : src/expression.s
+
+# target to generate assembly for a file
+src/expression.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.s
+.PHONY : src/expression.cpp.s
+
+src/token.o: src/token.cpp.o
+
+.PHONY : src/token.o
+
+# target to build an object file
+src/token.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o
+.PHONY : src/token.cpp.o
+
+src/token.i: src/token.cpp.i
+
+.PHONY : src/token.i
+
+# target to preprocess a source file
+src/token.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.i
+.PHONY : src/token.cpp.i
+
+src/token.s: src/token.cpp.s
+
+.PHONY : src/token.s
+
+# target to generate assembly for a file
+src/token.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Eksamensprojekt-mathengine.dir/build.make CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.s
+.PHONY : src/token.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -181,6 +235,12 @@ help:
 	@echo "... application.o"
 	@echo "... application.i"
 	@echo "... application.s"
+	@echo "... src/expression.o"
+	@echo "... src/expression.i"
+	@echo "... src/expression.s"
+	@echo "... src/token.o"
+	@echo "... src/token.i"
+	@echo "... src/token.s"
 .PHONY : help
 
 

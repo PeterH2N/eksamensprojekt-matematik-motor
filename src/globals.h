@@ -9,8 +9,7 @@
 static char operators[] = { '+', '-', '*', '/', '^', '=', '(', ')', ':' };
 static char seperators[] = { ';' };
 static std::map<std::string, double> identifiers;
-static std::map< std::string, std::function<void()>> storedFunctions;
-
+static std::map< std::string, std::function<void()> > storedFunctions;
 
 #endif GLOBALS_H
 

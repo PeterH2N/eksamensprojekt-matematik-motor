@@ -89,17 +89,47 @@ CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/application.cpp" -o CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.s
 
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o: CMakeFiles/Eksamensprojekt-mathengine.dir/flags.make
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o: ../src/expression.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o -c "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp"
+
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp" > CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.i
+
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp" -o CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.s
+
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o: CMakeFiles/Eksamensprojekt-mathengine.dir/flags.make
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o: ../src/token.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o -c "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp"
+
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp" > CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.i
+
+CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp" -o CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.s
+
 # Object files for target Eksamensprojekt-mathengine
 Eksamensprojekt__mathengine_OBJECTS = \
-"CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.o"
+"CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.o" \
+"CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o" \
+"CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o"
 
 # External object files for target Eksamensprojekt-mathengine
 Eksamensprojekt__mathengine_EXTERNAL_OBJECTS =
 
 Eksamensprojekt-mathengine: CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.o
+Eksamensprojekt-mathengine: CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o
+Eksamensprojekt-mathengine: CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o
 Eksamensprojekt-mathengine: CMakeFiles/Eksamensprojekt-mathengine.dir/build.make
 Eksamensprojekt-mathengine: CMakeFiles/Eksamensprojekt-mathengine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Eksamensprojekt-mathengine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Eksamensprojekt-mathengine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Eksamensprojekt-mathengine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

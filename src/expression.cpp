@@ -72,7 +72,7 @@ void Expression::lexify(std::string input)
 		else if (currentType == Token::TokenType::Invalid)
 		{
 			std::cout << "Invalid character in expression at character " + i + 1 << std::endl;
-			tokens = {};
+            tokens.clear();
 			return;
 		}
 

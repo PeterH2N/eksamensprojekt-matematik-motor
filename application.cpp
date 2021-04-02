@@ -9,7 +9,7 @@
 
 int main()
 {
-	storedFunctions["sin"] = [](){};
+    //storedFunctions["sin"] = [](){};
 
 	std::string input = "2*(0-6)+(5*2)";
 

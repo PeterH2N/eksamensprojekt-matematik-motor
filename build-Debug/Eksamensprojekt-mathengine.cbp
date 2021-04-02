@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
@@ -65,6 +66,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
@@ -81,6 +83,24 @@
 			</Target>
 		</Build>
 		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/application.cpp">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.h">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/globals.h">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/helpfunctions.h">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.h">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
 		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/CMakeLists.txt">
