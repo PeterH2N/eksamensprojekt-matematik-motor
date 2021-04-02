@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I"/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src"
 
 CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
 
