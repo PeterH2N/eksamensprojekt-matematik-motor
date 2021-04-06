@@ -11,11 +11,11 @@ int main()
 {
     //storedFunctions["sin"] = [](){};
 
-	std::string input = "2*(0-6)+(5*2)";
+	std::string input = "4/3*a+4=2/3*a";
 
 	Expression expr(input);
 
-	std::cout << expr.calculated() << std::endl;
+	std::cout << expr.solveLinearEquation() << std::endl;
 
 	return 0;
 }

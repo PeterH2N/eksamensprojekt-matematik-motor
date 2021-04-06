@@ -1,3 +1,5 @@
 .vs
 out
 LOG
+pseudo.cpp
+CMakeLists.txt.user

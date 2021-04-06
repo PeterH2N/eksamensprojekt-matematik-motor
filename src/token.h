@@ -13,12 +13,12 @@ class Token
 public:
 	enum class TokenType : int
 	{
+		Invalid,
 		Identifier,
 		Literal,
 		Operator,
 		Seperator,
 		Function,
-		Invalid
 	};
 
 	Token() {}
