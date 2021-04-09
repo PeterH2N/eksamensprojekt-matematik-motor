@@ -1,6 +1,6 @@
 ﻿// Eksamensprojekt-mathengine.cpp : Defines the entry point for the application.
 
-#include "src/expression.h"
+#include "src/expression.hpp"
 
 #include <iostream>
 #include <functional>
@@ -9,9 +9,9 @@
 
 int main()
 {
-    //storedFunctions["sin"] = [](){};
+    //storedFunctions["sin"] = "HI";
 
-	std::string input = "4/3*a+4=2/3*a";
+	std::string input = "2*x+5=5/3*x+7";
 
 	Expression expr(input);
 

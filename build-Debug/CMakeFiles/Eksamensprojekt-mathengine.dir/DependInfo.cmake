@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/application.cpp" "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/Eksamensprojekt-mathengine.dir/application.cpp.o"
   "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp" "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/Eksamensprojekt-mathengine.dir/src/expression.cpp.o"
+  "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/globals.cpp" "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/Eksamensprojekt-mathengine.dir/src/globals.cpp.o"
   "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp" "/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/build-Debug/CMakeFiles/Eksamensprojekt-mathengine.dir/src/token.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
