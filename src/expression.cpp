@@ -1,4 +1,4 @@
-#include "expression.h"
+#include "expression.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -66,10 +66,10 @@ void Expression::lexify(std::string input)
 		}
 		else if (currentType != prevType)
 		{
-			if (mapContainsKey(storedFunctions, buffer))
+			/*if (mapContainsKey(storedFunctions, buffer))
 			{
 				prevType = Token::TokenType::Function;
-			}
+			}*/
 			hasADecimal = false;
 			currentToken.type = prevType;
 			currentToken.value = buffer;
@@ -169,17 +169,16 @@ Expression Expression::replaceByIndices(Expression replacement, std::pair<int, i
 
 	return returnExpr;
 }
-
 Expression Expression::calculated() const
 {
 	// using PEMDAS, we calculate the result (only works with literals)
-	Expression returnExpr(tokens);
+	Expression returnExpr(*this);
 	// parentheses
 	{
 		int offset = 0;
 		for (std::pair<int, int> indices = returnExpr.getParenthesesIndices(); indices != std::pair<int, int>(0, 0); indices = returnExpr.getParenthesesIndices(offset))
 		{
-			Expression subExpr = returnExpr.subExprFromIndices({indices.first + 1,indices.second - 1});
+			Expression subExpr = returnExpr.subExprFromIndices(std::pair<int,int>(indices.first + 1,indices.second - 1));
 			subExpr = subExpr.calculated();
 			// remove parenthesis from expression
 			returnExpr = returnExpr.replaceByIndices(subExpr, indices);
@@ -267,6 +266,23 @@ Expression Expression::calculated() const
 	}
 
 	return returnExpr;
+}
+
+Expression Expression::multiplyByFactor(const Expression& factor)
+{
+	return Expression();
+}
+
+Expression Expression::simplyfy()
+{
+	// start by lifting all parentheses
+
+	// we need a function that multiplies an expression by another expression
+
+
+
+
+	return Expression();
 }
 
 Expression Expression::solveLinearEquation()
@@ -459,6 +475,18 @@ Expression Expression::solveLinearEquation()
 	std::vector<Token> resultTokens = { Token(Token::TokenType::Identifier, identifier), Token(Token::TokenType::Operator, "="), Token(Token::TokenType::Literal, std::to_string(result)) };
 
 	return Expression(resultTokens);
+}
+
+Expression Expression::isolateIdentifier(std::string identifier)
+{
+	// 
+	Expression leftSide, rightSide;
+
+
+
+
+
+	return Expression();
 }
 
 std::string Expression::printString() const

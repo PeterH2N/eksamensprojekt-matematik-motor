@@ -1,7 +1,7 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include "token.h"
+#include "token.hpp"
 
 class Expression
 {
@@ -47,7 +47,13 @@ public:
 
 	Expression calculated() const;
 
+	Expression multiplyByFactor(const Expression& factor);
+
+	Expression simplyfy();
+
 	Expression solveLinearEquation();
+
+	Expression isolateIdentifier(std::string identifier);
 
 	std::string printString() const;
 
