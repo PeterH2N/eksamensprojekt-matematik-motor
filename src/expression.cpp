@@ -179,7 +179,7 @@ Expression Expression::calculated() const
 		int offset = 0;
 		for (std::pair<int, int> indices = returnExpr.getParenthesesIndices(); indices != std::pair<int, int>(0, 0); indices = returnExpr.getParenthesesIndices(offset))
 		{
-			Expression subExpr = returnExpr.subExprFromIndices({indices.first + 1,indices.second - 1});
+            Expression subExpr = returnExpr.subExprFromIndices(std::pair<int,int> (indices.first + 1,indices.second - 1));
 			subExpr = subExpr.calculated();
 			// remove parenthesis from expression
 			returnExpr = returnExpr.replaceByIndices(subExpr, indices);

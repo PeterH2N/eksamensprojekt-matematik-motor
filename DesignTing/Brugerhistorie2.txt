@@ -1,0 +1,9 @@
+** Funktioner **
+
+1. Brugeren åbner programmet
+2. Brugeren definere en funktion
+3. Brugeren køre plot kommandoen over sin funktion
+4. Programmet viser et plot af funktionen
+5. Brugeren bruger solve funktion til at løse for x
+6. Programmet viser svaret/svarene for ligningen
+7. Brugeren giver sin computer en thumbs up ikke lukker programmet
