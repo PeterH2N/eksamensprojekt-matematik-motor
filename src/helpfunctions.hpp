@@ -1,5 +1,4 @@
-#ifndef HELPFUNCTIONS_H
-#define HELPFUNCTIONS_H
+#pragma once
 #include "globals.hpp"
 #include <vector>
 #include <map>
@@ -23,5 +22,3 @@ inline bool mapContainsKey(std::map<T1, T2> Map, T1 key)
 			return true;
 	return false;
 }
-
-#endif HELPFUNCTIONS_H

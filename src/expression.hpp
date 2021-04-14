@@ -1,63 +1,19 @@
-#ifndef EXPRESSION_H
-#define EXPRESSION_H
-
-#include "token.hpp"
+#pragma once
+#include "subexpression.hpp"
 
 class Expression
 {
 public:
-
-	struct SubExprIdentifier
+	Expression(std::vector<Token> _tokens);
+	~Expression()
 	{
-		enum class SubExprType : int
-		{
-			Invalid,
-			Term,
-			Parenthesis,
-			Numerator,
-			Denominator,
-			Function,
-		};
-		SubExprIdentifier(){}
-		SubExprIdentifier(std::pair<int, int>, SubExprType);
+		for (auto subExpr : subExprs)
+			delete subExpr;
+	}
+	std::vector<SubExpression*> subExprs;
 
-		std::pair<int, int> indices;
+	std::vector<Token> getTokens();
 
-		SubExprType type = SubExprType::Invalid;
-	};
-
-	Expression();
-	Expression(std::string);
-	Expression(std::vector<Token>);
-	Expression(const Expression&);
-
-	std::vector<Token> tokens;
-
-	std::vector<SubExprIdentifier> identifiers;
-
-	std::pair<int, int> getParenthesesIndices(int offset = 0);
-
-	void lexify(std::string);
-
-	void identify();
-
-	Expression subExprFromIndices(std::pair<int,int> indices) const;
-
-	Expression replaceByIndices(Expression replacement, std::pair<int,int> indices) const;
-
-	Expression calculated() const;
-
-	Expression multiplyByFactor(const Expression& factor);
-
-	Expression simplyfy();
-
-	Expression solveLinearEquation();
-
-	Expression isolateIdentifier(std::string identifier);
-
-	std::string printString() const;
-
-	friend std::ostream& operator<<(std::ostream& os, const Expression& t);
+private:
+	void organize(std::vector<Token> tokens);
 };
-
-#endif EXPRESSION_H

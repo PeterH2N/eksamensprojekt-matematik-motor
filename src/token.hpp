@@ -1,12 +1,6 @@
-#ifndef TOKEN_H
-#define TOKEN_H
-
-#include <algorithm>
+#pragma once
 #include <string>
-#include <functional>
 #include "helpfunctions.hpp"
-
-
 
 class Token
 {
@@ -31,12 +25,13 @@ public:
 
 	std::string printString() const;
 
+	friend std::vector<Token> lexify(std::string input);
 
 	friend std::ostream& operator<<(std::ostream& os, const Token& t);
 
 	friend bool operator==(const Token& t1, const Token& t2);
+
+	friend Token::TokenType getTypeFromChar(char c);
 };
 
-Token::TokenType getTypeFromChar(char c);
 
-#endif TOKEN_H

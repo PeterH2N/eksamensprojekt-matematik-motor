@@ -1,4 +1,4 @@
 #include "globals.hpp"
 
-char operators[OPERATORS_SIZE] = { '+', '-', '*', '/', '^', '=', '(', ')', ':' };
-char seperators[SEPERATORS_SIZE] = { ';' };
+char Global::operators[OPERATORS_SIZE] = { '+', '-', '*', '/', '^', '=', '(', ')', ':' };
+char Global::seperators[SEPERATORS_SIZE] = { ';' };
