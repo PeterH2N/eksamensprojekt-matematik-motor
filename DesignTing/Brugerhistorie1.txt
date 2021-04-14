@@ -1,0 +1,7 @@
+** Løse en ligning **
+
+1. Brugeren åbner programmet
+2. Brugeren skriver kommandoen til at løse ligniner (solve)
+3. Brugeren intaster sin ligning og trykker enter
+4. Programmet viser svaret/svarene
+5. Brugeren giver sin computer en thumps up og lukker programmet

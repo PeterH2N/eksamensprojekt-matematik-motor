@@ -88,19 +88,22 @@
 		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.cpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
-		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.h">
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/expression.hpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
-		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/globals.h">
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/globals.cpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
-		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/helpfunctions.h">
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/globals.hpp">
+			<Option target="Eksamensprojekt-mathengine"/>
+		</Unit>
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/helpfunctions.hpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
 		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.cpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
-		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.h">
+		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/src/token.hpp">
 			<Option target="Eksamensprojekt-mathengine"/>
 		</Unit>
 		<Unit filename="/Users/haim/Desktop/Skole/HTX 3.g/Programmering/eksamensprojekt-matematik-motor/CMakeLists.txt">

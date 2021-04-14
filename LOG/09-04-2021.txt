@@ -1,0 +1,6 @@
+Idag er blevet brugt på: 
+* At skrive brugerhistorier
+* Gennemgået ændret kode
+* Snakket om opsætning af simplfi funktion
+* Gået igang med flowchart over calculated
+
