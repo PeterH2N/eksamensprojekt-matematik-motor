@@ -1,0 +1,4 @@
+I dag har vi igenigen ændret datastrukturen af expression klassen. SubExpression har ændret navn til Factor, da det bedre beskriver hvad det er. Der er stadig de samme underklasser.
+Der er tilføjet en klasse som hedder Term, som simpelt nok indeholder en vektor af Factor pointers, og en bool der fortæller om leddet har positivt eller negativt fortegn. 
+Expression klassen indeholder nu en vektor af Terms, som hver indeholder nogle faktorer. Denne struktur burde kunne beskrive enhver ligning generelt. Det eneste som ikke findes, er en måde at skrive funktioner ind på,
+som f.eks. sin(x) eller log(x). Det næste der mangler er stadig at kunne konstruere en Expression korrekt ud fra en vektor af Tokens. Derfra vil det være nogenlunde simpelt at manipulere udtrykkene.
