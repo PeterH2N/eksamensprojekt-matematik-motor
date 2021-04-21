@@ -9,14 +9,11 @@
 
 int main()
 {
-	
+	std::string input = "(2*x^2+3*x)/((1+5^x)/(x^3))";
 
-	std::string input = "x^2+3*x+1=0";
+	Expression f(lexify(input));
 
-	SubExpression* t = new LiteralTerm(lexify(input));
-
-	for (auto token : t->getTokens())
-	std::cout << token << " ";
+	std::cout << getStringFromTokens(f.getTokens()) << std::endl;
 
 	return 0;
 }

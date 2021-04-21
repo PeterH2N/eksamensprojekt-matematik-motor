@@ -1,16 +1,13 @@
 #pragma once
-#include "subexpression.hpp"
+#include "term.hpp"
 
 class Expression
 {
 public:
 	Expression(std::vector<Token> _tokens);
-	~Expression()
-	{
-		for (auto subExpr : subExprs)
-			delete subExpr;
-	}
-	std::vector<SubExpression*> subExprs;
+	~Expression();
+
+	std::vector<Term*> terms;
 
 	std::vector<Token> getTokens();
 

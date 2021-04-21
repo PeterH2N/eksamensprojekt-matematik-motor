@@ -120,3 +120,52 @@ Token::TokenType getTypeFromChar(char c)
 	else
 		return Token::TokenType::Invalid;
 }
+
+std::pair<int, int> getParenthesisIndices(std::vector<Token> tokens, int offset)
+{
+	size_t numLeftParentheses = 0, numRightParentheses = 0;
+	size_t leftParenthesisIndex, rightParenthesisIndex;
+
+	// looping though the tokens
+	for (size_t i = offset; i < tokens.size(); i++)
+	{
+		// if we encounter a left parenthesis
+		if (tokens[i].type == Token::TokenType::Operator && tokens[i].value == "(")
+		{
+			// update index and number of opening parentheses
+			leftParenthesisIndex = i;
+			numLeftParentheses++;
+			for (size_t j = i + 1; j < tokens.size(); j++)
+			{
+				// if we find more left parentheses, add to the count, and the same with right ones
+				if (tokens[j].type == Token::TokenType::Operator && tokens[j].value == "(")
+					numLeftParentheses++;
+				else if (tokens[j].type == Token::TokenType::Operator && tokens[j].value == ")")
+					numRightParentheses++;
+
+				// once there is the same amount of each, the first we found must have been closed.
+				if (numLeftParentheses == numRightParentheses)
+				{
+					rightParenthesisIndex = j;
+					return std::pair<int, int>(leftParenthesisIndex, rightParenthesisIndex);
+				}
+			}
+		}
+	}
+	return std::pair<int, int>(-1, -1);
+}
+
+std::vector<Token> getTokensFromIndices(const std::vector<Token>& tokens, std::pair<int, int> indices)
+{
+	return std::vector<Token>(&tokens[indices.first], &tokens[indices.second] + 1);
+}
+
+std::string getStringFromTokens(const std::vector<Token>& tokens)
+{
+	std::string returnString = "";
+	for (auto token : tokens)
+	{
+		returnString += token.value;
+	}
+	return returnString;
+}

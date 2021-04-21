@@ -32,6 +32,12 @@ public:
 	friend bool operator==(const Token& t1, const Token& t2);
 
 	friend Token::TokenType getTypeFromChar(char c);
+
+	friend std::pair<int, int> getParenthesisIndices(std::vector<Token> tokens, int offset = 0);
+
+	friend std::vector<Token> getTokensFromIndices(const std::vector<Token>& tokens, std::pair<int, int> indices);
+
+	friend std::string getStringFromTokens(const std::vector<Token>& tokens);
 };
 
 
