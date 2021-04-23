@@ -19,20 +19,21 @@ Term::Term(std::vector<Token> tokens)
 	Factor::FactorType currentType = Factor::FactorType::Literal;
 	for (int i = 0; i < tokens.size(); i++)
 	{
-		// if this is the last token
-		if (i == tokens.size() - 1)
-		{
-			auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-			factors.push_back(getFactorPointerFromType(factorTokens, currentType));
-		}
+
 		// if we encounter a token that is part of literal
-		else if ((tokens[i].type == Token::TokenType::Identifier || tokens[i].type == Token::TokenType::Literal || tokens[i].value == "*") || (tokens[i].value == "^" && tokens[i + 1].type == Token::TokenType::Literal))
+		if ((tokens[i].type == Token::TokenType::Identifier || tokens[i].type == Token::TokenType::Literal || tokens[i].value == "*") || (tokens[i].value == "^" && tokens[i + 1].type == Token::TokenType::Literal))
 		{
 			currentType = Factor::FactorType::Literal;
+			// if this is the last token
+			if (i == tokens.size() - 1)
+			{
+				auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
+				factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+			}
 		}
 		else
 		{
-			if (i != 0 && currentType == Factor::FactorType::Literal && tokens[i].value != "^")
+			if (i != 0 && currentType == Factor::FactorType::Literal && tokens[i].value != "^" && tokens[i].value != "/")
 			{
 				auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i - 1));
 				factors.push_back(getFactorPointerFromType(factorTokens, currentType));
@@ -63,7 +64,13 @@ Term::Term(std::vector<Token> tokens)
 			}
 			else if (tokens[i].value == "/")
 			{
-				lastCutOff = i;
+				if (i > 1)
+				{
+					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i - 2));
+					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					lastCutOff = i - 1;
+				}
+				lastCutOff = i - 1;
 				currentType = Factor::FactorType::Fraction;
 				if (tokens[i + 1].value == "(")
 				{
@@ -76,6 +83,7 @@ Term::Term(std::vector<Token> tokens)
 					i++;
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
 					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					lastCutOff = i + 1;
 				}
 			}
 			else if (tokens[i].value == "(")
@@ -130,8 +138,8 @@ Term::Term(std::vector<Token> tokens)
 				}
 
 			}
+			lastCutOff = 1 + i;
 		}
-
 	}
 
 }

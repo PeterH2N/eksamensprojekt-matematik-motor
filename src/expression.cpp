@@ -29,8 +29,6 @@ void Expression::organize(std::vector<Token> tokens)
 {
 	// split the tokens into terms, skipping over each parenthesis
 
-	std::vector<std::vector<Token>> termsTokens;
-
 	int lastTermIndex = 0;
 	int nextTermIndex = 0;
 
@@ -42,7 +40,7 @@ void Expression::organize(std::vector<Token> tokens)
 			int nextParenthesisIndex = getParenthesisIndices(tokens, i).second;
 			i = nextParenthesisIndex - 1;
 		}
-		else if (tokens[i].value == "+" || tokens[i].value == "-")
+		else if ((tokens[i].value == "+" || tokens[i].value == "-") && i != 0)
 		{
 			nextTermIndex = i;
 			std::vector<Token> termTokens;

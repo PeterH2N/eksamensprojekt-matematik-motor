@@ -1,5 +1,6 @@
 .vs
 out
+build-Debug
 LOG
 pseudo.cpp
 CMakeLists.txt.user

@@ -89,9 +89,19 @@ std::vector<Token> lexify(std::string input)
 		}
 
 	}
-	currentToken.type = currentType;
-	currentToken.value = buffer;
-	tokens.push_back(currentToken);
+	if (input.size() == 1)
+	{
+		currentToken.type = prevType;
+		currentToken.value = buffer;
+		tokens.push_back(currentToken);
+	}
+	else
+	{
+		currentToken.type = currentType;
+		currentToken.value = buffer;
+		tokens.push_back(currentToken);
+	}
+
 
 	return tokens;
 }

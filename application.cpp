@@ -9,7 +9,7 @@
 
 int main()
 {
-	std::string input = "(2*x^2+3*x)/((1+5^x)/(x^3))";
+	std::string input = "(-2)^2";
 
 	Expression f(lexify(input));
 

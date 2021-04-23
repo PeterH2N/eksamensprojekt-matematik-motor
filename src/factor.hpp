@@ -43,8 +43,6 @@ public:
 
 	Literal(std::vector<Token> _tokens);
 
-	bool sign = true;
-
 	double value = 1;
 
 	std::vector<std::pair<std::string, double>> identifiers;

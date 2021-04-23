@@ -7,9 +7,14 @@ Exponential::Exponential(std::vector<Token> tokens)
 	int operatorIndex = -1;
 	for (int i = 0; i < tokens.size(); i++)
 	{
+		if (tokens[i].value == "(")
+		{
+			i = getParenthesisIndices(tokens, i).second;
+		}
 		if (tokens[i].value == "^")
 		{
 			operatorIndex = i;
+			break;
 		}
 	}
 

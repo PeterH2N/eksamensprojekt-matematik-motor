@@ -7,21 +7,26 @@ Fraction::Fraction(std::vector<Token> tokens)
 	long long operatorIndex = -1;
 	for (int i = 0; i < tokens.size(); i++)
 	{
-		if (tokens[i].value == "/")
+		if (tokens[i].value == "(")
+		{
+			i = getParenthesisIndices(tokens, i).second;
+		}
+		else if (tokens[i].value == "/")
 		{
 			operatorIndex = i;
+			break;
 		}
 	}
 
 	if (tokens[operatorIndex - 1].value == ")")
-		numerator = new Expression(std::vector<Token>(&tokens[1], &tokens[operatorIndex - 1]));
+		numerator = new Expression(getTokensFromIndices(tokens, std::pair<int,int>(1, operatorIndex - 2)));
 	else
-		numerator = new Expression(std::vector<Token>(&tokens[0], &tokens[operatorIndex]));
+		numerator = new Expression(getTokensFromIndices(tokens, std::pair<int, int>(0, operatorIndex - 1)));
 
 	if (tokens[operatorIndex + 1].value == "(")
-		denominator = new Expression(std::vector<Token>(&tokens[operatorIndex + 2], &tokens[tokens.size() - 1]));
+		denominator = new Expression(getTokensFromIndices(tokens, std::pair<int, int>(operatorIndex + 2, tokens.size() - 2)));
 	else
-		denominator = new Expression(std::vector<Token>(&tokens[operatorIndex], &tokens[tokens.size() - 1]));
+		denominator = new Expression(getTokensFromIndices(tokens, std::pair<int, int>(operatorIndex + 1, tokens.size() - 1)));
 
 }
 

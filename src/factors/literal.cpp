@@ -1,4 +1,5 @@
 #include "../factor.hpp"
+#include <cmath>
 
 Literal::Literal(std::vector<Token> tokens)
 	: Factor(FactorType::Literal)
@@ -6,7 +7,15 @@ Literal::Literal(std::vector<Token> tokens)
 	for (int i = 0; i < tokens.size(); i++)
 	{
 		if (tokens[i].type == Token::TokenType::Literal)
-			value *= std::stod(tokens[i].value);
+		{
+				if (i < tokens.size() - 1 && tokens[i + 1].value == "^")
+				{
+					value *= std::pow(std::stod(tokens[i].value), std::stod(tokens[i + 2].value));
+					i += 2;
+				}
+				else
+					value *= std::stod(tokens[i].value);
+		}
 		else if (tokens[i].type == Token::TokenType::Identifier)
 		{
 			// get exponent, if any
