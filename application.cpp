@@ -11,9 +11,13 @@ int main()
 {
 	std::string input = "(-2)^2";
 
-	Expression f(lexify(input));
+	Expression t(lexify("2*x^2+3*x+3"));
+	Literal l(lexify("x"));
 
-	std::cout << getStringFromTokens(f.getTokens()) << std::endl;
+	t.multiply(&l);
+
+	std::cout << getStringFromTokens(t.getTokens()) << std::endl;
+
 
 	return 0;
 }

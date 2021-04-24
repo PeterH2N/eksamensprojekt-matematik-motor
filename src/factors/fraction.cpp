@@ -1,6 +1,6 @@
 #include "../expression.hpp"
 
-Fraction::Fraction(std::vector<Token> tokens)
+Fraction::Fraction(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Fraction)
 {
 	// find the divider
@@ -28,6 +28,24 @@ Fraction::Fraction(std::vector<Token> tokens)
 	else
 		denominator = new Expression(getTokensFromIndices(tokens, std::pair<int, int>(operatorIndex + 1, tokens.size() - 1)));
 
+}
+
+Fraction::Fraction(const Fraction& f)
+	: Factor(Factor::FactorType::Fraction)
+{
+	numerator = new Expression(*f.numerator);
+	denominator = new Expression(*f.denominator);
+}
+
+Fraction::~Fraction()
+{
+	delete numerator;
+	delete denominator;
+}
+
+Factor* Fraction::Clone()
+{
+	return new Fraction(*this);
 }
 
 std::vector<Token> Fraction::getTokens()
@@ -70,4 +88,17 @@ Factor* Fraction::multiply(Factor* s)
 Factor* Fraction::divide(Factor* s)
 {
 	return nullptr;
+}
+
+bool Fraction::operator==(Factor* f2)
+{
+	if (f2->type != type)
+		return false;
+	auto fr2 = dynamic_cast<Fraction*>(f2);
+	return (*numerator == *fr2->numerator && *denominator == *fr2->denominator);
+}
+
+bool Fraction::operator!=(Factor* f2)
+{
+	return false;
 }

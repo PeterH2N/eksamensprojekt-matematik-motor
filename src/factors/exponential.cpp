@@ -1,6 +1,6 @@
 #include "../expression.hpp"
 
-Exponential::Exponential(std::vector<Token> tokens)
+Exponential::Exponential(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Exponential)
 {
 	// find the exponent operator
@@ -28,6 +28,24 @@ Exponential::Exponential(std::vector<Token> tokens)
 	else
 		exponent = new Expression(getTokensFromIndices(tokens, std::pair<int, int>(operatorIndex + 1, tokens.size() - 1)));
 	
+}
+
+Exponential::Exponential(const Exponential& e)
+	: Factor(Factor::FactorType::Exponential)
+{
+	base = new Expression(*e.base);
+	exponent = new Expression(*e.exponent);
+}
+
+Exponential::~Exponential()
+{
+	delete base;
+	delete exponent;
+}
+
+Factor* Exponential::Clone()
+{
+	return new Exponential(*this);
 }
 
 std::vector<Token> Exponential::getTokens()
@@ -68,4 +86,14 @@ Factor* Exponential::multiply(Factor* s)
 Factor* Exponential::divide(Factor* s)
 {
 	return nullptr;
+}
+
+bool Exponential::operator==(Factor* f2)
+{
+	return false;
+}
+
+bool Exponential::operator!=(Factor* f2)
+{
+	return false;
 }

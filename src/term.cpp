@@ -1,7 +1,8 @@
 #include "term.hpp"
 
-Term::Term(std::vector<Token> tokens)
+Term::Term(const std::vector<Token>& _tokens)
 {
+	auto tokens = _tokens;
 	if (tokens[0].value == "-")
 	{
 		sign = false;
@@ -28,7 +29,7 @@ Term::Term(std::vector<Token> tokens)
 			if (i == tokens.size() - 1)
 			{
 				auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-				factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+				factors.push_back(Factor::Create(factorTokens, currentType));
 			}
 		}
 		else
@@ -36,14 +37,14 @@ Term::Term(std::vector<Token> tokens)
 			if (i != 0 && currentType == Factor::FactorType::Literal && tokens[i].value != "^" && tokens[i].value != "/")
 			{
 				auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i - 1));
-				factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+				factors.push_back(Factor::Create(factorTokens, currentType));
 			}
 			if (tokens[i].value == "^")
 			{
 				if (i > 1)
 				{
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i - 2));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 					lastCutOff = i - 1;
 				}
 				currentType = Factor::FactorType::Exponential;
@@ -51,12 +52,12 @@ Term::Term(std::vector<Token> tokens)
 				{
 					i = getParenthesisIndices(tokens, i).second;
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 				}
 				else
 				{
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i + 1));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 					i++;
 				}
 
@@ -67,7 +68,7 @@ Term::Term(std::vector<Token> tokens)
 				if (i > 1)
 				{
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i - 2));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 					lastCutOff = i - 1;
 				}
 				lastCutOff = i - 1;
@@ -76,13 +77,13 @@ Term::Term(std::vector<Token> tokens)
 				{
 					i = getParenthesisIndices(tokens, i).second;
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 				}
 				else
 				{
 					i++;
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 					lastCutOff = i + 1;
 				}
 			}
@@ -95,7 +96,7 @@ Term::Term(std::vector<Token> tokens)
 				{
 					// type is parenthesis
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff + 1, i - 2));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 				}
 				else if (tokens[i].value == "^")
 				{
@@ -104,13 +105,13 @@ Term::Term(std::vector<Token> tokens)
 					{
 						i = getParenthesisIndices(tokens, i).second;
 						auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-						factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+						factors.push_back(Factor::Create(factorTokens, currentType));
 					}
 					else
 					{
 						i++;
 						auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-						factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+						factors.push_back(Factor::Create(factorTokens, currentType));
 					}
 
 				}
@@ -121,20 +122,20 @@ Term::Term(std::vector<Token> tokens)
 					{
 						i = getParenthesisIndices(tokens, i).second;
 						auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-						factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+						factors.push_back(Factor::Create(factorTokens, currentType));
 					}
 					else
 					{
 						i++;
 						auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff, i));
-						factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+						factors.push_back(Factor::Create(factorTokens, currentType));
 					}
 				}
 				else
 				{
 					// type is parenthesis
 					auto factorTokens = getTokensFromIndices(tokens, std::pair<int, int>(lastCutOff + 1, i - 1));
-					factors.push_back(getFactorPointerFromType(factorTokens, currentType));
+					factors.push_back(Factor::Create(factorTokens, currentType));
 				}
 
 			}
@@ -142,6 +143,15 @@ Term::Term(std::vector<Token> tokens)
 		}
 	}
 
+}
+
+Term::Term(const Term& t)
+{
+	sign = t.sign;
+	for (auto factor : t.factors)
+	{
+		factors.push_back(factor->Clone());
+	}
 }
 
 Term::~Term()
@@ -167,4 +177,40 @@ std::vector<Token> Term::getTokens()
 			returnTokens.push_back(Token(Token::TokenType::Operator, "*"));
 	}
 	return returnTokens;
+}
+
+bool Term::operator==(const Term& t2)
+{
+	if (factors.size() != t2.factors.size() || sign != t2.sign)
+		return false;
+
+	// even if the factors are out of order, they still evaluate to the same. Therefore we need to make sure that each factor in one term is also existant in the other.
+	for (int i = 0; i < factors.size(); i++)
+	{
+		bool exists = false;
+		for (int j = 0; j < factors.size(); j++)
+		{
+			if (*t2.factors[i] == factors[j])
+				exists = true;
+		}
+		if (!exists)
+			return false;
+	}
+
+	return true;
+}
+
+bool Term::operator!=(const Term& t2)
+{
+	return !(*this == t2);
+}
+
+void Term::multiply(Factor* f)
+{
+	for (auto& factor : factors)
+	{
+		auto temp = factor;
+		factor = factor->multiply(f);
+		delete temp;
+	}
 }

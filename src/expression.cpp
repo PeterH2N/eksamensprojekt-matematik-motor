@@ -5,6 +5,14 @@ Expression::Expression(std::vector<Token> _tokens)
 	organize(_tokens);
 }
 
+Expression::Expression(const Expression& e)
+{
+	for (auto term : e.terms)
+	{
+		terms.push_back(new Term(*term));
+	}
+}
+
 Expression::~Expression()
 {
 	for (auto term : terms)
@@ -23,6 +31,40 @@ std::vector<Token> Expression::getTokens()
 		returnVector.insert(returnVector.end(), tempTokens.begin(), tempTokens.end());
 	}
 	return returnVector;
+}
+
+bool Expression::operator==(const Expression& e2)
+{
+	if (terms.size() != e2.terms.size())
+		return false;
+
+	// same as term, the expressions will be equal even if theyre out of order
+	for (int i = 0; i < terms.size(); i++)
+	{
+		bool exists = false;
+		for (int j = 0; j < terms.size(); j++)
+		{
+			if (*e2.terms[i] == *terms[j])
+				exists = true;
+		}
+		if (!exists)
+			return false;
+	}
+
+	return true;
+}
+
+bool Expression::operator!=(const Expression& e2)
+{
+	return !(*this == e2);
+}
+
+void Expression::multiply(Literal* l)
+{
+	for (auto& term : terms)
+	{
+		term->multiply(l);
+	}
 }
 
 void Expression::organize(std::vector<Token> tokens)

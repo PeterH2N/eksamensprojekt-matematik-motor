@@ -6,9 +6,6 @@ class Expression;
 class Factor
 {
 public:
-	Factor() {};
-	virtual ~Factor() = 0;
-
 	enum class FactorType : char
 	{
 		Literal,
@@ -17,19 +14,22 @@ public:
 		Parenthesis,
 		Invalid,
 	};
-protected:
+	static Factor* Create(const std::vector<Token> tokens, const FactorType& type);
+	virtual Factor* Clone() = 0;
+	virtual ~Factor() = 0;
+
 	Factor(FactorType _type)
 		: type(_type) {}
 
 	FactorType type = FactorType::Invalid;
-public:
-	friend Factor* getFactorPointerFromType(std::vector<Token> tokens, FactorType type);
 
 	virtual std::vector<Token> getTokens() = 0;
 
 	virtual FactorType getType() = 0;
 
-protected:
+	virtual bool operator==(Factor* f2) = 0;
+
+	virtual bool operator!=(Factor* f2) = 0;
 
 	virtual Factor* multiply(Factor* s) = 0;
 
@@ -39,13 +39,17 @@ protected:
 class Literal : public Factor
 {
 public:
-	Literal(){}
+	Literal(const Literal& l);
+	Literal(const std::vector<Token>& _tokens);
 
-	Literal(std::vector<Token> _tokens);
+	Factor* Clone();
+private:
 
 	double value = 1;
 
 	std::vector<std::pair<std::string, double>> identifiers;
+
+public:
 
 	std::vector<Token> getTokens();
 
@@ -54,18 +58,24 @@ public:
 	Factor* multiply(Factor* s);
 
 	Factor* divide(Factor* s);
+
+	bool operator==(Factor* f2);
+	bool operator!=(Factor* f2);
+
+	// specific operations
+	Factor* multiply(Literal* l);
+	Factor* divide(Literal* l);
+
 };
 
 class Fraction : public Factor
 {
 public:
-	Fraction(std::vector<Token> tokens);
+	Fraction(const std::vector<Token>& tokens);
+	Fraction(const Fraction& f);
+	~Fraction();
 
-	~Fraction()
-	{
-		delete numerator;
-		delete denominator;
-	}
+	Factor* Clone();
 
 	Expression* numerator = nullptr;
 	Expression* denominator = nullptr;
@@ -77,17 +87,20 @@ public:
 	Factor* multiply(Factor* s);
 
 	Factor* divide(Factor* s);
+
+	bool operator==(Factor* f2);
+	bool operator!=(Factor* f2);
 };
 
 class Parenthesis : public Factor
 {
 public:
-	Parenthesis(std::vector<Token> tokens);
+	Parenthesis(const std::vector<Token>& tokens);
+	Parenthesis(const Parenthesis& p);
+	~Parenthesis();
 
-	~Parenthesis()
-	{
-		delete expression;
-	}
+	Factor* Clone();
+
 	Expression* expression = nullptr;
 
 	std::vector<Token> getTokens();
@@ -97,18 +110,19 @@ public:
 	Factor* multiply(Factor* s);
 
 	Factor* divide(Factor* s);
+
+	bool operator==(Factor* f2);
+	bool operator!=(Factor* f2);
 };
 
 class Exponential : public Factor
 {
 public:
-	Exponential(std::vector<Token> tokens);
+	Exponential(const std::vector<Token>& tokens);
+	Exponential(const Exponential& e);
+	~Exponential();
 
-	~Exponential()
-	{
-		delete base;
-		delete exponent;
-	}
+	Factor* Clone();
 
 	Expression* base = nullptr;
 	Expression* exponent = nullptr;
@@ -120,4 +134,7 @@ public:
 	Factor* multiply(Factor* s);
 
 	Factor* divide(Factor* s);
+
+	bool operator==(Factor* f2);
+	bool operator!=(Factor* f2);
 };

@@ -1,9 +1,25 @@
 #include "../expression.hpp"
 
-Parenthesis::Parenthesis(std::vector<Token> tokens)
+Parenthesis::Parenthesis(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Parenthesis)
 {
 	expression = new Expression(tokens);
+}
+
+Parenthesis::Parenthesis(const Parenthesis& p)
+	: Factor(Factor::FactorType::Parenthesis)
+{
+	expression = new Expression(*p.expression);
+}
+
+Parenthesis::~Parenthesis()
+{
+	delete expression;
+}
+
+Factor* Parenthesis::Clone()
+{
+	return new Parenthesis(*this);
 }
 
 std::vector<Token> Parenthesis::getTokens()
@@ -36,5 +52,15 @@ Factor* Parenthesis::multiply(Factor* s)
 Factor* Parenthesis::divide(Factor* s)
 {
 	return nullptr;
+}
+
+bool Parenthesis::operator==(Factor* f2)
+{
+	return false;
+}
+
+bool Parenthesis::operator!=(Factor* f2)
+{
+	return false;
 }
 

@@ -1,7 +1,14 @@
 #include "../factor.hpp"
 #include <cmath>
 
-Literal::Literal(std::vector<Token> tokens)
+Literal::Literal(const Literal& l)
+	: Factor(FactorType::Literal)
+{
+	value = l.value;
+	identifiers = l.identifiers;
+}
+
+Literal::Literal(const std::vector<Token>& tokens)
 	: Factor(FactorType::Literal)
 {
 	for (int i = 0; i < tokens.size(); i++)
@@ -51,6 +58,11 @@ Literal::Literal(std::vector<Token> tokens)
 	}
 }
 
+Factor* Literal::Clone()
+{
+	return new Literal(*this);
+}
+
 std::vector<Token> Literal::getTokens()
 {
 	std::vector<Token> returnTokens;
@@ -85,10 +97,71 @@ Factor::FactorType Literal::getType()
 
 Factor* Literal::multiply(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return multiply(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
 Factor* Literal::divide(Factor* s)
+{
+	return nullptr;
+}
+
+bool Literal::operator==(Factor* f2)
+{
+	if (type != f2->type)
+		return false;
+	else
+	{
+		Literal* l2 = dynamic_cast<Literal*>(f2);
+		return (identifiers == l2->identifiers && value == l2->value);
+	}
+}
+
+bool Literal::operator!=(Factor* f2)
+{
+	return !(*this == f2);
+}
+
+Factor* Literal::multiply(Literal* l)
+{
+	Literal* returnFactor = new Literal(*this);
+	returnFactor->value *= l->value;
+
+	for (int i = 0; i < l->identifiers.size(); i++)
+	{
+		// if identifier is already in our vector
+		int identIndex = -1;
+		for (int j = 0; j < returnFactor->identifiers.size(); j++)
+		{
+			if (l->identifiers[i].first == returnFactor->identifiers[j].first)
+			{
+				identIndex = j;
+				break;
+			}
+		}
+
+		if (identIndex != -1)
+		{
+			returnFactor->identifiers[identIndex].second += l->identifiers[i].second;
+		}
+		else
+		{
+			returnFactor->identifiers.push_back(l->identifiers[i]);
+		}
+	}
+	return returnFactor;
+}
+
+Factor* Literal::divide(Literal* l)
 {
 	return nullptr;
 }

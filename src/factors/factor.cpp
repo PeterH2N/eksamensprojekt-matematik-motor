@@ -1,8 +1,6 @@
 #include "../factor.hpp"
 
-Factor::~Factor() {}
-
-Factor* getFactorPointerFromType(std::vector<Token> tokens, Factor::FactorType type)
+Factor* Factor::Create(const std::vector<Token> tokens, const FactorType& type)
 {
 	switch (type)
 	{
@@ -25,3 +23,6 @@ Factor* getFactorPointerFromType(std::vector<Token> tokens, Factor::FactorType t
 		break;
 	}
 }
+
+Factor::~Factor() {}
+

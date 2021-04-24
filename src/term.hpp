@@ -5,7 +5,8 @@
 class Term
 {
 public:
-	Term(std::vector<Token> _tokens);
+	Term(const std::vector<Token>& _tokens);
+	Term(const Term& t);
 	~Term();
 
 	std::vector<Factor*> factors;
@@ -13,4 +14,11 @@ public:
 	bool sign = true;
 
 	std::vector<Token> getTokens();
+
+	bool operator==(const Term& t2);
+
+	bool operator!=(const Term& t2);
+
+	void multiply(Factor* f);
+
 };
