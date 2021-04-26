@@ -19,6 +19,10 @@ public:
 
 	bool operator!=(const Term& t2);
 
+	void combineFactors();
+
+	void multiply(const Term& t);
+
 	void multiply(Factor* f);
 
 };

@@ -1,4 +1,4 @@
-#include "../factor.hpp"
+#include "expression.hpp"
 #include <cmath>
 
 Literal::Literal(const Literal& l)
@@ -104,6 +104,21 @@ Factor* Literal::multiply(Factor* s)
 		Literal* l = dynamic_cast<Literal*>(s);
 		return multiply(l);
 	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return multiply(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return multiply(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return multiply(l);
+	}
 	default:
 		break;
 	}
@@ -159,6 +174,27 @@ Factor* Literal::multiply(Literal* l)
 		}
 	}
 	return returnFactor;
+}
+
+Factor* Literal::multiply(Fraction* f)
+{
+	auto returnFraction = new Fraction(*f);
+
+	returnFraction->numerator->multiply(this);
+	return returnFraction;
+}
+
+Factor* Literal::multiply(Parenthesis* p)
+{
+	auto returnFraction = new Parenthesis(*p);
+
+	returnFraction->expression->multiply(this);
+	return returnFraction;
+}
+
+Factor* Literal::multiply(Exponential* p)
+{
+	return nullptr;
 }
 
 Factor* Literal::divide(Literal* l)

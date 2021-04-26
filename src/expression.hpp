@@ -15,7 +15,9 @@ public:
 	bool operator==(const Expression& e2);
 	bool operator!=(const Expression& e2);
 
-	void multiply(Literal* l);
+	void multiply(Factor* f);
+
+	void multiply(const Expression& e);
 
 private:
 	void organize(std::vector<Token> tokens);

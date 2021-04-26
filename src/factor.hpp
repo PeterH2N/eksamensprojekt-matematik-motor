@@ -2,6 +2,10 @@
 #include "token.hpp"
 
 class Expression;
+class Literal;
+class Fraction;
+class Parenthesis;
+class Exponential;
 
 class Factor
 {
@@ -64,6 +68,9 @@ public:
 
 	// specific operations
 	Factor* multiply(Literal* l);
+	Factor* multiply(Fraction* f);
+	Factor* multiply(Parenthesis* p);
+	Factor* multiply(Exponential* p);
 	Factor* divide(Literal* l);
 
 };
@@ -90,6 +97,12 @@ public:
 
 	bool operator==(Factor* f2);
 	bool operator!=(Factor* f2);
+
+	// specific operators
+	Factor* multiply(Literal* l);
+	Factor* multiply(Fraction* f);
+	Factor* multiply(Parenthesis* p);
+	Factor* multiply(Exponential* p);
 };
 
 class Parenthesis : public Factor

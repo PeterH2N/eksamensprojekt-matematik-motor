@@ -205,6 +205,33 @@ bool Term::operator!=(const Term& t2)
 	return !(*this == t2);
 }
 
+void Term::combineFactors()
+{
+	for (int i = 0; i < factors.size(); i++)
+	{
+		for (int j = i + 1; j < factors.size(); j++)
+		{
+			if (factors[j]->type == factors[i]->type && factors[i]->type == Factor::FactorType::Literal)
+			{
+				auto temp = factors[i];
+				factors[i] = factors[i]->multiply(factors[j]);
+				delete temp;
+				delete factors[j];
+				factors.erase(factors.begin() + j);
+			}
+		}
+	}
+}
+
+void Term::multiply(const Term& t)
+{
+	for (auto factor : t.factors)
+	{
+		factors.push_back(factor->Clone());
+	}
+	combineFactors();
+}
+
 void Term::multiply(Factor* f)
 {
 	for (auto& factor : factors)
@@ -213,4 +240,5 @@ void Term::multiply(Factor* f)
 		factor = factor->multiply(f);
 		delete temp;
 	}
+
 }

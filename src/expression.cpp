@@ -59,11 +59,32 @@ bool Expression::operator!=(const Expression& e2)
 	return !(*this == e2);
 }
 
-void Expression::multiply(Literal* l)
+void Expression::multiply(Factor* f)
 {
 	for (auto& term : terms)
 	{
-		term->multiply(l);
+		term->multiply(f);
+	}
+}
+
+void Expression::multiply(const Expression& e)
+{
+	Expression copy(*this);
+
+	for (auto& term : terms)
+	{
+		delete term;
+	}
+	terms.clear();
+
+	for (auto& eterm : e.terms)
+	{
+		for (auto& cterm : copy.terms)
+		{
+			Term* temp= new Term(*cterm);
+			temp->multiply(*eterm);
+			terms.push_back(temp);
+		}
 	}
 }
 

@@ -102,3 +102,33 @@ bool Fraction::operator!=(Factor* f2)
 {
 	return false;
 }
+
+Factor* Fraction::multiply(Literal* l)
+{
+	Fraction* returnFraction = new Fraction(*this);
+
+	returnFraction->numerator->multiply(l);
+
+	return returnFraction;
+}
+
+Factor* Fraction::multiply(Fraction* f)
+{
+	Fraction* returnFraction = new Fraction(*this);
+
+	returnFraction->numerator->multiply(*f->numerator);
+	returnFraction->denominator->multiply(*f->denominator);
+
+
+	return returnFraction;
+}
+
+Factor* Fraction::multiply(Parenthesis* p)
+{
+	return nullptr;
+}
+
+Factor* Fraction::multiply(Exponential* p)
+{
+	return nullptr;
+}
