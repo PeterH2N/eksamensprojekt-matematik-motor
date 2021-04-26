@@ -41,7 +41,7 @@ std::vector<Token> lexify(std::string input)
 	bool hasADecimal = false;
 
 	currentChar = input[0];
-	prevType = getTypeFromChar(currentChar);
+    prevType = getTypeFromChar(currentChar);
 
 	buffer = currentChar;
 

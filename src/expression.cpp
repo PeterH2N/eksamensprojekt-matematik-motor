@@ -1,4 +1,5 @@
 #include "expression.hpp"
+#include <iterator>
 
 Expression::Expression(std::vector<Token> _tokens)
 {
@@ -108,7 +109,10 @@ void Expression::organize(std::vector<Token> tokens)
 			nextTermIndex = i;
 			std::vector<Token> termTokens;
 			if (lastTermIndex == nextTermIndex)
-				termTokens = std::vector<Token>({ tokens[lastTermIndex] });
+            {
+                termTokens.clear();
+                termTokens.push_back(tokens[lastTermIndex]);
+            }
 			else
 				termTokens = std::vector<Token>(&tokens[lastTermIndex], &tokens[nextTermIndex]);
 			terms.push_back(new Term(termTokens));
@@ -117,7 +121,7 @@ void Expression::organize(std::vector<Token> tokens)
 		}
 		else  if (i == tokens.size() - 1)
 		{
-			std::vector<Token> termTokens = std::vector<Token>(&tokens[lastTermIndex], tokens.end()._Ptr);
+            std::vector<Token> termTokens = std::vector<Token>(&tokens[lastTermIndex], &tokens[tokens.size() - 1]);
 			terms.push_back(new Term(termTokens));
 		}
 	}

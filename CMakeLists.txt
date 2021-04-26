@@ -13,4 +13,5 @@ include_directories(${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/src/factors)
 # Add source to this project's executable.
 add_executable (Eksamensprojekt-mathengine "application.cpp" ${SRC_FILES} ${HDR_FILES} )
 
+
 # TODO: Add tests and install targets if needed.
