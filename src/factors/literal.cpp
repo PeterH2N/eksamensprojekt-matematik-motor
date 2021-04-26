@@ -82,7 +82,10 @@ std::vector<Token> Literal::getTokens()
 		}
 		else
 		{
-			auto tempTokens = std::vector<Token>({ Token(Token::TokenType::Identifier, identifier.first), Token(Token::TokenType::Operator, "^"), Token(Token::TokenType::Literal, std::to_string(identifier.second)) });
+            std::vector<Token> tempTokens;
+            tempTokens.push_back( Token(Token::TokenType::Identifier, identifier.first));
+            tempTokens.push_back(Token(Token::TokenType::Operator, "^"));
+            tempTokens.push_back(Token(Token::TokenType::Literal, std::to_string(identifier.second)));
 			returnTokens.insert(returnTokens.end(), tempTokens.begin(), tempTokens.end());
 		}
 
@@ -99,7 +102,7 @@ Factor* Literal::multiply(Factor* s)
 {
 	switch (s->type)
 	{
-	case FactorType::Literal:
+    case (int)FactorType::Literal:
 	{
 		Literal* l = dynamic_cast<Literal*>(s);
 		return multiply(l);

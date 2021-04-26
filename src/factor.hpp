@@ -47,7 +47,7 @@ private:
 
 	double value = 1;
 
-	std::vector<std::pair<std::string, double>> identifiers;
+    std::vector<std::pair<std::string, double> > identifiers;
 
 public:
 
