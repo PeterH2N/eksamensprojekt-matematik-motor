@@ -102,7 +102,7 @@ Factor* Literal::multiply(Factor* s)
 {
 	switch (s->type)
 	{
-    case (int)FactorType::Literal:
+    case FactorType::Literal:
 	{
 		Literal* l = dynamic_cast<Literal*>(s);
 		return multiply(l);

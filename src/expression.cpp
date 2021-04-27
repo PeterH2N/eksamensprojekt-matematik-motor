@@ -121,7 +121,7 @@ void Expression::organize(std::vector<Token> tokens)
 		}
 		else  if (i == tokens.size() - 1)
 		{
-            std::vector<Token> termTokens = std::vector<Token>(&tokens[lastTermIndex], &tokens[tokens.size() - 1]);
+            std::vector<Token> termTokens = std::vector<Token>(&tokens[lastTermIndex], &(tokens.back()));
 			terms.push_back(new Term(termTokens));
 		}
 	}

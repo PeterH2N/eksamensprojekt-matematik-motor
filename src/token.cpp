@@ -8,17 +8,17 @@ Token::Token(TokenType _type, std::string _value)
 
 std::string Token::TokenTypeString() const
 {
-	switch ((int)this->type)
+	switch (this->type)
 	{
-	case (int)Token::TokenType::Identifier:
+	case Token::TokenType::Identifier:
 		return "identifier";
-	case (int)Token::TokenType::Literal:
+	case Token::TokenType::Literal:
 		return "literal";
-	case (int)Token::TokenType::Operator:
+	case Token::TokenType::Operator:
 		return "operator";
-	case (int)Token::TokenType::Seperator:
+	case Token::TokenType::Seperator:
 		return "seperator";
-	case (int)Token::TokenType::Function:
+	case Token::TokenType::Function:
 		return "function";
 	default:
 		return "invalid";
