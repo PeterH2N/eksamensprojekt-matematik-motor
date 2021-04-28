@@ -145,6 +145,11 @@ Term::Term(const std::vector<Token>& _tokens)
 
 }
 
+Term::Term(Factor* f)
+{
+	factors.push_back(f);
+}
+
 Term::Term(const Term& t)
 {
 	sign = t.sign;

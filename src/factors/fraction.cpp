@@ -1,5 +1,8 @@
 #include "../expression.hpp"
 
+Fraction::Fraction()
+	: Factor(Factor::FactorType::Fraction) {}
+
 Fraction::Fraction(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Fraction)
 {
