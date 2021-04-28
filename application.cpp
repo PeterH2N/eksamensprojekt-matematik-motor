@@ -11,8 +11,8 @@ int main()
 {
 	std::string input = "(-2)^2";
 
-	Expression t(lexify("2*x^2+3*x"));
-	Expression l(lexify("x+2"));
+    Expression t(lexify("2"));
+    Expression l(lexify("x"));
 
 	t.multiply(l);
 
