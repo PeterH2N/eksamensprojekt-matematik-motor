@@ -1,5 +1,8 @@
 #include "../expression.hpp"
 
+Parenthesis::Parenthesis()
+	: Factor(Factor::FactorType::Parenthesis) {}
+
 Parenthesis::Parenthesis(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Parenthesis)
 {

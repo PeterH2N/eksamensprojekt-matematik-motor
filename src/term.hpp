@@ -6,6 +6,7 @@ class Term
 {
 public:
 	Term(const std::vector<Token>& _tokens);
+	Term(Factor* f);
 	Term(const Term& t);
 	~Term();
 

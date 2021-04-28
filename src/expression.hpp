@@ -5,6 +5,8 @@ class Expression
 {
 public:
 	Expression(std::vector<Token> _tokens);
+	Expression(Term* t);
+	Expression(Factor* f);
 	Expression(const Expression& e);
 	~Expression();
 

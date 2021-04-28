@@ -43,6 +43,7 @@ public:
 class Literal : public Factor
 {
 public:
+	Literal();
 	Literal(const Literal& l);
 	Literal(const std::vector<Token>& _tokens);
 
@@ -78,6 +79,7 @@ public:
 class Fraction : public Factor
 {
 public:
+	Fraction();
 	Fraction(const std::vector<Token>& tokens);
 	Fraction(const Fraction& f);
 	~Fraction();
@@ -108,6 +110,7 @@ public:
 class Parenthesis : public Factor
 {
 public:
+	Parenthesis();	
 	Parenthesis(const std::vector<Token>& tokens);
 	Parenthesis(const Parenthesis& p);
 	~Parenthesis();
@@ -131,6 +134,7 @@ public:
 class Exponential : public Factor
 {
 public:
+	Exponential();
 	Exponential(const std::vector<Token>& tokens);
 	Exponential(const Exponential& e);
 	~Exponential();

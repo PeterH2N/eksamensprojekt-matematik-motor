@@ -1,5 +1,8 @@
 #include "../expression.hpp"
 
+Exponential::Exponential()
+	: Factor(Factor::FactorType::Exponential) {}
+
 Exponential::Exponential(const std::vector<Token>& tokens)
 	: Factor(Factor::FactorType::Exponential)
 {

@@ -6,6 +6,16 @@ Expression::Expression(std::vector<Token> _tokens)
 	organize(_tokens);
 }
 
+Expression::Expression(Term* t)
+{
+	terms.push_back(t);
+}
+
+Expression::Expression(Factor* f)
+{
+	terms.push_back(new Term(f));
+}
+
 Expression::Expression(const Expression& e)
 {
 	for (auto term : e.terms)
