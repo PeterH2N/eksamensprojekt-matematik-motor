@@ -100,11 +100,16 @@ public:
 	bool operator==(Factor* f2);
 	bool operator!=(Factor* f2);
 
-	// specific operators
+	// specific multiply operators
 	Factor* multiply(Literal* l);
 	Factor* multiply(Fraction* f);
-	Factor* multiply(Parenthesis* p);
-	Factor* multiply(Exponential* p);
+	Factor* multiply(Parenthesis* f);
+	Factor* multiply(Exponential* f);
+	// specific divide operators
+	Factor* divide(Literal* l);
+	Factor* divide(Fraction* f);
+	Factor* divide(Parenthesis* f);
+	Factor* divide(Exponential* f);
 };
 
 class Parenthesis : public Factor
@@ -129,6 +134,17 @@ public:
 
 	bool operator==(Factor* f2);
 	bool operator!=(Factor* f2);
+
+	// specific multiply operators
+	Factor* multiply(Literal* l);
+	Factor* multiply(Fraction* f);
+	Factor* multiply(Parenthesis* f);
+	Factor* multiply(Exponential* f);
+	// specific divide operators
+	Factor* divide(Literal* l);
+	Factor* divide(Fraction* f);
+	Factor* divide(Parenthesis* f);
+	Factor* divide(Exponential* f);
 };
 
 class Exponential : public Factor
@@ -154,4 +170,15 @@ public:
 
 	bool operator==(Factor* f2);
 	bool operator!=(Factor* f2);
+
+	// specific multiply operators
+	Factor* multiply(Literal* l);
+	Factor* multiply(Fraction* f);
+	Factor* multiply(Parenthesis* f);
+	Factor* multiply(Exponential* f);
+	// specific divide operators
+	Factor* divide(Literal* l);
+	Factor* divide(Fraction* f);
+	Factor* divide(Parenthesis* f);
+	Factor* divide(Exponential* f);
 };
