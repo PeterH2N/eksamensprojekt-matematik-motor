@@ -239,11 +239,23 @@ void Term::multiply(const Term& t)
 
 void Term::multiply(Factor* f)
 {
+	bool hasMultiplied = false;
 	for (auto& factor : factors)
 	{
-		auto temp = factor;
-		factor = factor->multiply(f);
-		delete temp;
+		auto multiplied = factor->multiply(f);
+		if (multiplied != nullptr)
+		{
+			auto temp = factor;
+			factor = multiplied;
+			delete temp;
+			hasMultiplied = true;
+			break;
+		}
+
+	}
+	if (!hasMultiplied)
+	{
+		factors.push_back(f);
 	}
 
 }
