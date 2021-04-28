@@ -11,8 +11,8 @@ int main()
 {
 	std::string input = "(-2)^2";
 
-	Literal t(lexify("2*x^3"));
-	Literal l(lexify("3*x^3"));
+    Fraction t(lexify("a/b"));
+    Exponential l(lexify("2^c"));
 
 
 	std::cout << getStringFromTokens(t.divide(&l)->getTokens()) << std::endl;

@@ -105,6 +105,13 @@ public:
 	Factor* multiply(Fraction* f);
 	Factor* multiply(Parenthesis* p);
 	Factor* multiply(Exponential* p);
+
+    // specific divide operators
+    Factor* divide(Literal* l);
+    Factor* divide(Fraction* f);
+    Factor* divide(Parenthesis* p);
+    Factor* divide(Exponential* p);
+
 };
 
 class Parenthesis : public Factor

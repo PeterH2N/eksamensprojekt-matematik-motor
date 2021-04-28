@@ -135,3 +135,43 @@ Factor* Fraction::multiply(Exponential* p)
 {
 	return nullptr;
 }
+
+Factor* Fraction::divide(Literal* l)
+{
+    Fraction* returnFraction = new Fraction(*this);
+
+    returnFraction->denominator->multiply(l);
+
+    return returnFraction;
+
+}
+
+Factor* Fraction::divide(Fraction* f)
+{
+    Fraction* returnFraction = new Fraction(*this);
+
+    returnFraction->numerator->multiply(*f->denominator);
+    returnFraction->denominator->multiply(*f->numerator);
+
+    return returnFraction;
+
+}
+
+Factor* Fraction::divide(Parenthesis* p)
+{
+    Fraction* returnFraction = new Fraction(*this);
+
+    returnFraction->denominator->multiply(p);
+
+    return returnFraction;
+
+}
+
+Factor* Fraction::divide(Exponential* p)
+{
+    Fraction* returnFraction = new Fraction(*this);
+
+    returnFraction->denominator->multiply(p);
+
+    return returnFraction;
+}
