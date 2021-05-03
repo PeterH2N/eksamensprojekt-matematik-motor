@@ -1,4 +1,5 @@
 #include "term.hpp"
+#include "expression.hpp"
 
 Term::Term(const std::vector<Token>& _tokens)
 {
@@ -150,6 +151,14 @@ Term::Term(Factor* f)
 	factors.push_back(f);
 }
 
+Term::Term(std::vector<Factor*> _factors)
+{
+	for (auto factor : _factors)
+	{
+		factors.push_back(factor->Clone());
+	}
+}
+
 Term::Term(const Term& t)
 {
 	sign = t.sign;
@@ -235,6 +244,34 @@ void Term::multiply(const Term& t)
 		factors.push_back(factor->Clone());
 	}
 	combineFactors();
+}
+
+void Term::divide(const Term& t)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(*this);
+	returnFactor->denominator = new Expression(t);
+
+	for (auto factor : factors)
+		delete factor;
+
+	factors.clear();
+	factors.push_back(returnFactor);
+}
+
+void Term::divide(const Expression& e)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(*this);
+	returnFactor->denominator = new Expression(e);
+
+	for (auto factor : factors)
+		delete factor;
+
+	factors.clear();
+	factors.push_back(returnFactor);
 }
 
 void Term::multiply(Factor* f)

@@ -85,11 +85,61 @@ Factor::FactorType Fraction::getType()
 
 Factor* Fraction::multiply(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return multiply(l);
+	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return multiply(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return multiply(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return multiply(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
 Factor* Fraction::divide(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return divide(l);
+	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return divide(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return divide(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return divide(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
@@ -128,12 +178,20 @@ Factor* Fraction::multiply(Fraction* f)
 
 Factor* Fraction::multiply(Parenthesis* p)
 {
-	return nullptr;
+	Fraction* returnFraction = new Fraction(*this);
+
+	returnFraction->denominator->multiply(p);
+
+	return returnFraction;
 }
 
-Factor* Fraction::multiply(Exponential* p)
+Factor* Fraction::multiply(Exponential* e)
 {
-	return nullptr;
+	Fraction* returnFraction = new Fraction(*this);
+
+	returnFraction->denominator->multiply(e);
+
+	return returnFraction;
 }
 
 Factor* Fraction::divide(Literal* l)

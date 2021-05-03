@@ -11,11 +11,12 @@ int main()
 {
 	std::string input = "(-2)^2";
 
-    Fraction t(lexify("a/b"));
-    Fraction l(lexify("b/c"));
+	Expression e(lexify("2*x^2+(2+x)"));
+	Expression e2(lexify("(1+x)/(x^2)"));
 
+	e.divide(e2);
 
-	std::cout << getStringFromTokens(t.divide(&l)->getTokens()) << std::endl;
+	std::cout << getStringFromTokens(e.getTokens()) << std::endl;
 
 
 	return 0;

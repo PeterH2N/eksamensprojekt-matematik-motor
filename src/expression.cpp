@@ -6,9 +6,9 @@ Expression::Expression(std::vector<Token> _tokens)
 	organize(_tokens);
 }
 
-Expression::Expression(Term* t)
+Expression::Expression(const Term& t)
 {
-	terms.push_back(t);
+	terms.push_back(new Term(t));
 }
 
 Expression::Expression(Factor* f)
@@ -97,6 +97,37 @@ void Expression::multiply(const Expression& e)
 			terms.push_back(temp);
 		}
 	}
+}
+
+void Expression::divide(const Expression& e)
+{
+	for (auto& term : terms)
+	{
+		term->divide(e);
+	}
+}
+
+void Expression::add(const Expression& e)
+{
+	for (auto eterm : e.terms)
+	{
+		terms.push_back(new Term(*eterm));
+	}
+}
+
+void Expression::subtract(const Expression& e)
+{
+	Expression subExpr(e);
+
+	for (auto& eterm : e.terms)
+	{
+		if (eterm->sign)
+			eterm->sign = false;
+		else
+			eterm->sign = true;
+	}
+
+	add(subExpr);
 }
 
 void Expression::organize(std::vector<Token> tokens)
