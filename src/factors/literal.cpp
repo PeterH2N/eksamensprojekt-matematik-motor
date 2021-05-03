@@ -1,5 +1,6 @@
 #include "expression.hpp"
 #include <cmath>
+#include <algorithm>
 
 Literal::Literal()
 	: Factor(Factor::FactorType::Literal) {}
@@ -59,6 +60,12 @@ Literal::Literal(const std::vector<Token>& tokens)
 				i += 2;
 		}
 	}
+
+	std::sort(identifiers.begin(), identifiers.end(), 
+		[](const std::pair<std::string, double>& v1, const std::pair<std::string, double>& v2) -> bool 
+	{
+		return v1.first > v2.first;
+	});
 }
 
 Factor* Literal::Clone()
@@ -133,6 +140,31 @@ Factor* Literal::multiply(Factor* s)
 
 Factor* Literal::divide(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return divide(l);
+	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return divide(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return divide(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return divide(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
@@ -258,4 +290,37 @@ Factor* Literal::divide(Literal* l)
 		returnFraction->denominator = new Expression(denLiteral);
 		return returnFraction;
 	}
+}
+
+Factor* Literal::divide(Fraction* f)
+{
+	auto returnFraction = new Fraction(*f);
+
+	auto temp = returnFraction->numerator;
+	returnFraction->numerator = returnFraction->denominator;
+	returnFraction->denominator = temp;
+
+	returnFraction->numerator->multiply(this);
+
+	return returnFraction;
+}
+
+Factor* Literal::divide(Parenthesis* f)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(this);
+	returnFactor->denominator = new Expression(*f->expression);
+
+	return returnFactor;
+}
+
+Factor* Literal::divide(Exponential* f)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(this);
+	returnFactor->denominator = new Expression(f);
+
+	return returnFactor;
 }

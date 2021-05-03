@@ -49,21 +49,153 @@ Factor::FactorType Parenthesis::getType()
 
 Factor* Parenthesis::multiply(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return multiply(l);
+	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return multiply(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return multiply(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return multiply(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
 Factor* Parenthesis::divide(Factor* s)
 {
+	switch (s->type)
+	{
+	case FactorType::Literal:
+	{
+		Literal* l = dynamic_cast<Literal*>(s);
+		return divide(l);
+	}
+	case FactorType::Fraction:
+	{
+		Fraction* l = dynamic_cast<Fraction*>(s);
+		return divide(l);
+	}
+	case FactorType::Parenthesis:
+	{
+		Parenthesis* l = dynamic_cast<Parenthesis*>(s);
+		return divide(l);
+	}
+	case FactorType::Exponential:
+	{
+		Exponential* l = dynamic_cast<Exponential*>(s);
+		return divide(l);
+	}
+	default:
+		break;
+	}
 	return nullptr;
 }
 
 bool Parenthesis::operator==(Factor* f2)
 {
-	return false;
+	if (type == f2->type)
+		return false;
+	auto f = dynamic_cast<Parenthesis*>(f2);
+	return *expression == *f->expression;
 }
 
 bool Parenthesis::operator!=(Factor* f2)
 {
-	return false;
+	return !(*this == f2);
+}
+
+Factor* Parenthesis::multiply(Literal* l)
+{
+	auto returnFactor = new Parenthesis(*this);
+
+	returnFactor->multiply(l);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::multiply(Fraction* f)
+{
+	auto returnFactor = new Fraction(*f);
+
+	returnFactor->numerator->multiply(this);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::multiply(Parenthesis* f)
+{
+	auto returnFactor = new Parenthesis(*this);
+
+	returnFactor->expression->multiply(*f->expression);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::multiply(Exponential* f)
+{
+	auto returnFactor = new Parenthesis(*this);
+
+	returnFactor->expression->multiply(f);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::divide(Literal* l)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(*expression);
+	returnFactor->denominator = new Expression(l);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::divide(Fraction* f)
+{
+	auto returnFraction = new Fraction(*f);
+
+	auto temp = returnFraction->numerator;
+	returnFraction->numerator = returnFraction->denominator;
+	returnFraction->denominator = temp;
+
+	returnFraction->numerator->multiply(*expression);
+
+	return returnFraction;
+}
+
+Factor* Parenthesis::divide(Parenthesis* f)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(*expression);
+	returnFactor->denominator = new Expression(*f->expression);
+
+	return returnFactor;
+}
+
+Factor* Parenthesis::divide(Exponential* f)
+{
+	auto returnFactor = new Fraction();
+
+	returnFactor->numerator = new Expression(*expression);
+	returnFactor->denominator = new Expression(f);
+
+	return returnFactor;
 }
 

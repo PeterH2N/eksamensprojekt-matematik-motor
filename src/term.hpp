@@ -7,6 +7,7 @@ class Term
 public:
 	Term(const std::vector<Token>& _tokens);
 	Term(Factor* f);
+	Term(std::vector<Factor*> _factors);
 	Term(const Term& t);
 	~Term();
 
@@ -23,7 +24,11 @@ public:
 	void combineFactors();
 
 	void multiply(const Term& t);
-
+	
 	void multiply(Factor* f);
+
+	void divide(const Term& t);
+
+	void divide(const Expression& e);
 
 };
