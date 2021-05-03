@@ -1,0 +1,7 @@
+<map id="Factor" name="Factor">
+<area shape="rect" id="node1" title=" " alt="" coords="212,5,317,215"/>
+<area shape="rect" id="node2" href="$class_exponential.html" title=" " alt="" coords="5,292,124,531"/>
+<area shape="rect" id="node3" href="$class_fraction.html" title=" " alt="" coords="148,292,253,531"/>
+<area shape="rect" id="node4" href="$class_literal.html" title=" " alt="" coords="277,263,383,560"/>
+<area shape="rect" id="node5" href="$class_parenthesis.html" title=" " alt="" coords="407,299,525,523"/>
+</map>
