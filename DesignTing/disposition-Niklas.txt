@@ -1,0 +1,16 @@
+
+Forklaring af projektet
+
+Planlægning
+- Versionsdiagrammer
+
+Strukturering af arbejde
+- Udeligering af opgaver
+- Git
+
+Klassestruktur
+Gennemgang af en funktion
+- Lexifi
+
+Demonstration af divider og gange
+Evaluering af projektet
