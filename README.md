@@ -1,4 +1,4 @@
-<h1> Sådan bruger du programmet <h1>
+<h1> Sådan bruger du programmet </h1>
 
 Først åbner du projektet og kører CMAKE.
 Herefter finder du application.cpp, dette er filen du ændre for at bruge programmet.
