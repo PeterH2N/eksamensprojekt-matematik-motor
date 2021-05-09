@@ -130,6 +130,14 @@ void Expression::subtract(const Expression& e)
 	add(subExpr);
 }
 
+void Expression::simplify()
+{
+	for (auto& term : terms)
+	{
+		term->simplify();
+	}
+}
+
 void Expression::organize(std::vector<Token> tokens)
 {
 	// split the tokens into terms, skipping over each parenthesis

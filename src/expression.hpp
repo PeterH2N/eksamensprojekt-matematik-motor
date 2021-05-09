@@ -25,6 +25,8 @@ public:
 	void add(const Expression& e);
 	void subtract(const Expression& e);
 
+	void simplify();
+
 private:
 	void organize(std::vector<Token> tokens);
 };

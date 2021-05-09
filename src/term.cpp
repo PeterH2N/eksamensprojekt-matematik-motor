@@ -274,6 +274,23 @@ void Term::divide(const Expression& e)
 	factors.push_back(returnFactor);
 }
 
+void Term::simplify()
+{
+	for (int i = 0; i < factors.size() - 1; i++)
+	{
+		auto result = factors[i]->multiply(factors[i + 1]);
+		if (result != nullptr)
+		{
+			delete factors[i];
+			delete factors[i + 1];
+
+			factors.erase(factors.begin() + i, factors.begin() + i + 2);
+
+			factors.insert(factors.begin() + i, result);
+		}
+	}
+}
+
 void Term::multiply(Factor* f)
 {
 	bool hasMultiplied = false;
